@@ -1,0 +1,17 @@
+.container {
+  margin: auto;
+  height: 60vw;
+  width: 60vw;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+}
