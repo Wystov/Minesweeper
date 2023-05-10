@@ -4,11 +4,10 @@ import increaseDanger from './increase-danger';
 import cells from './data';
 
 const createData = (firstClick) => {
-  const { fieldSize } = state;
+  const { fieldSize, mines } = state;
   const data = new Array(fieldSize).fill(0);
-  const maxMines = fieldSize / 10;
   let minesCount = 0;
-  while (minesCount < maxMines) {
+  while (minesCount < mines) {
     const randomNum = getRandomNum(100);
     if (data[randomNum] !== 'x' && randomNum !== firstClick) {
       data[randomNum] = 'x';

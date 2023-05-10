@@ -1,9 +1,10 @@
 import state from './state';
 import createData from './create-data';
-import openCell from './check-cell';
+import openCell from './open-cell';
 
 const cellClick = (e) => {
-  if (!e.target.classList.contains('cell')) return;
+  const target = e.target.classList;
+  if (!target.contains('cell') || target.contains('cell--open')) return;
   const { turns } = state;
   const cell = parseInt(e.target.dataset.cell, 10);
   if (turns === 0) {
