@@ -1,5 +1,3 @@
-const getRandomNum = (max) => Math.floor(Math.random() * max);
-
 const increaseDanger = (el) => {
   if (el !== undefined && typeof el === 'number') {
     const count = el + 1;
@@ -8,4 +6,4 @@ const increaseDanger = (el) => {
   return el;
 };
 
-export { getRandomNum, increaseDanger };
+export default increaseDanger;

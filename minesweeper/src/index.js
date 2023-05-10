@@ -1,4 +1,4 @@
-import createBody from './components/create-body';
+import createBody from './js/create-body';
 import './style.scss';
 
 createBody();
