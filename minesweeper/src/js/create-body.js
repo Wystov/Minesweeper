@@ -17,9 +17,14 @@ const createBody = () => {
   const counters = createElement('div', ['counters'], container);
   const turns = createElement('div', ['turns'], counters, null, 'Turns: ');
   page.elements.turnsCount = createElement('span', ['turns__count'], turns, null, '0');
+  const soundBtn = createElement('i', ['sound-btn'], counters);
+  soundBtn.addEventListener('click', () => {
+    state.sound = !state.sound;
+    soundBtn.classList.toggle('sound-btn--mute');
+  });
   const timer = createElement('div', ['timer'], counters, null, 'Time: ');
   page.elements.timerCount = createElement('span', ['timer__count'], timer, null, '0');
-  page.elements.message = createElement('div', ['message'], field);
+  page.elements.message = createElement('div', ['message'], container);
   const data = new Array(state.fieldSize).fill();
   createField(data, field);
 };

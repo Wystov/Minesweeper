@@ -1,6 +1,8 @@
 import page from './data';
 import state from './state';
 import checkGameEnd from './game-end';
+import playSound from './play-sound';
+import openSound from '../assets/sounds/open.wav';
 
 const checkCell = (cell) => {
   const { open, flag } = page.cells;
@@ -37,6 +39,7 @@ const openCell = (cell) => {
   if (!cells.open.includes(cell)) cells.open.push(cell);
   if (value) {
     el.innerHTML = value;
+    if (state.sound) playSound(openSound);
     if (typeof value === 'number') el.classList.add(`color--${value}`);
   } else {
     const closedNeighbors = getNeighbors(cell);

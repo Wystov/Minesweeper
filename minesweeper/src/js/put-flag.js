@@ -1,5 +1,7 @@
 import page from './data';
 import state from './state';
+import playSound from './play-sound';
+import flagSound from '../assets/sounds/flag.wav';
 
 const putFlag = (e) => {
   e.preventDefault();
@@ -20,6 +22,7 @@ const putFlag = (e) => {
     e.target.innerHTML = '';
     flag.splice(i, 1);
   }
+  if (state.sound) playSound(flagSound);
   target.toggle('cell--flag');
 };
 

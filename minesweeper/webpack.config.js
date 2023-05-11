@@ -18,6 +18,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/assets/favicon/favicon.webp',
     }),
   ],
   module: {
@@ -31,8 +32,11 @@ const config = {
         use: [stylesHandler, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp|wav)$/i,
         type: 'asset',
+        generator: {
+          filename: path.join('assets', '[name].[ext]'),
+        },
       },
     ],
   },
