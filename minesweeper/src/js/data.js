@@ -1,8 +1,11 @@
-const cells = {
+const page = {
   elements: [],
-  data: [],
-  open: [],
-  flag: [],
+  cells: {
+    elements: [],
+    data: [],
+    open: [],
+    flag: [],
+  },
 };
 
-export default cells;
+export default page;

@@ -1,26 +1,87 @@
 .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 6vmin 1fr 6vmin;
+  gap: 2vmin;
+}
+
+.new-game {
+  cursor: pointer;
+  font-size: 3vmin;
+  text-align: center;
+  padding: 5px 10px;
   margin: auto;
-  height: 60vw;
-  width: 60vw;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+
+.field {
+  margin: auto;
+  height: 80vmin;
+  width: 80vmin;
+  max-width: 1200px;
+  max-height: 1200px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  gap: 5px;
+  gap: 0.5vmin;
 }
 
 .cell {
   cursor: pointer;
-  font-size: 30px;
+  font-size: 5vmin;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: bisque;
+  background-color: #b5b6b6;
 
   &--open {
-    background-color: aqua;
+    background-color: #eaeaea;
+  }
+}
+
+.color {
+  &--1 {
+    color: blue;
   }
 
-  &--flag {
-    background-color: brown;
+  &--2 {
+    color: green;
+  }
+
+  &--3,
+  &--4,
+  &--5,
+  &--6,
+  &--7,
+  &--8 {
+    color: red;
+  }
+
+}
+
+.counters {
+  font-size: 3vmin;
+  display: flex;
+  justify-content: space-around
+}
+
+.message {
+  display: none;
+  padding: 30px 15px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.6);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vmin;
+  font-weight: bold;
+  text-align: center;
+
+  &--active {
+    display: block;
   }
 }

@@ -1,7 +1,7 @@
 import state from './state';
 import getRandomNum from './utils';
 import increaseDanger from './increase-danger';
-import cells from './data';
+import page from './data';
 
 const createData = (firstClick) => {
   const { fieldSize, mines } = state;
@@ -9,8 +9,8 @@ const createData = (firstClick) => {
   let minesCount = 0;
   while (minesCount < mines) {
     const randomNum = getRandomNum(100);
-    if (data[randomNum] !== 'x' && randomNum !== firstClick) {
-      data[randomNum] = 'x';
+    if (data[randomNum] !== '&#128163;' && randomNum !== firstClick) {
+      data[randomNum] = '&#128163;';
       minesCount += 1;
     }
   }
@@ -33,7 +33,7 @@ const createData = (firstClick) => {
       if (i + 10 < fieldSize) data[i + 10] = increaseDanger(data[i + 10]);
     }
   });
-  cells.data = data;
+  page.cells.data = data;
   return data;
 };
 

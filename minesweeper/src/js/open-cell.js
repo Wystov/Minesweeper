@@ -1,9 +1,9 @@
-import cells from './data';
+import page from './data';
 import state from './state';
 import checkGameEnd from './game-end';
 
 const checkCell = (cell) => {
-  const { open, flag } = cells;
+  const { open, flag } = page.cells;
   const cellExists = cell >= 0 && cell < state.fieldSize;
   const isOpen = open.includes(cell);
   const isFlagged = flag.includes(cell);
@@ -30,12 +30,14 @@ const getNeighbors = (i) => {
 };
 
 const openCell = (cell) => {
+  const { cells } = page;
   const el = cells.elements[cell];
   const value = cells.data[cell];
   el.classList.add('cell--open');
   if (!cells.open.includes(cell)) cells.open.push(cell);
   if (value) {
-    el.textContent = value;
+    el.innerHTML = value;
+    if (typeof value === 'number') el.classList.add(`color--${value}`);
   } else {
     const closedNeighbors = getNeighbors(cell);
     closedNeighbors.forEach((x) => openCell(x));
