@@ -15,8 +15,8 @@ const cellClick = (e) => {
     createData(cell);
     page.timerId = setInterval(timer, 1000);
   }
-  openCell(cell);
   state.turns += 1;
+  openCell(cell);
   page.elements.turnsCount.textContent = state.turns;
 };
 

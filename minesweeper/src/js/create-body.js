@@ -19,7 +19,7 @@ const createBody = () => {
   page.elements.turnsCount = createElement('span', ['turns__count'], turns, null, '0');
   const timer = createElement('div', ['timer'], counters, null, 'Time: ');
   page.elements.timerCount = createElement('span', ['timer__count'], timer, null, '0');
-  page.elements.message = createElement('div', ['message'], container);
+  page.elements.message = createElement('div', ['message'], field);
   const data = new Array(state.fieldSize).fill();
   createField(data, field);
 };
