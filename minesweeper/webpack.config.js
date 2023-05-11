@@ -36,16 +36,17 @@ const config = {
       },
     ],
   },
-  devtool: 'source-map',
 };
 
 module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
+    config.devtool = false;
 
     config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = 'development';
+    config.devtool = 'source-map';
   }
   return config;
 };
