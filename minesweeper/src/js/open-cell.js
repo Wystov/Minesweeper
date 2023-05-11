@@ -4,42 +4,41 @@ import checkGameEnd from './game-end';
 
 const checkCell = (cell) => {
   const { open, flag } = cells;
+  const cellExists = cell >= 0 && cell < state.fieldSize;
   const isOpen = open.includes(cell);
   const isFlagged = flag.includes(cell);
-  return !isOpen && !isFlagged;
+  return !isOpen && !isFlagged && cellExists;
 };
 
 const getNeighbors = (i) => {
   const closedNeighbors = [];
-  const { fieldSize } = state;
   const isLeft = i % 10 === 0;
   const isRight = (i + 1) % 10 === 0;
   if (!isLeft) {
-    if (i - 1 >= 0 && checkCell(i - 1)) closedNeighbors.push(i - 1);
-    if (i - 11 >= 0 && checkCell(i - 11)) closedNeighbors.push(i - 11);
-    if (i + 9 < fieldSize && checkCell(i + 9)) closedNeighbors.push(i + 9);
+    if (checkCell(i - 1)) closedNeighbors.push(i - 1);
+    if (checkCell(i - 11)) closedNeighbors.push(i - 11);
+    if (checkCell(i + 9)) closedNeighbors.push(i + 9);
   }
   if (!isRight) {
-    if (i + 1 < fieldSize && checkCell(i + 1)) closedNeighbors.push(i + 1);
-    if (i - 9 >= 0 && checkCell(i - 9)) closedNeighbors.push(i - 9);
-    if (i + 11 < fieldSize && checkCell(i + 11)) closedNeighbors.push(i + 11);
+    if (checkCell(i + 1)) closedNeighbors.push(i + 1);
+    if (checkCell(i - 9)) closedNeighbors.push(i - 9);
+    if (checkCell(i + 11)) closedNeighbors.push(i + 11);
   }
-  if (i - 10 >= 0 && checkCell(i - 10)) closedNeighbors.push(i - 10);
-  if (i + 10 < fieldSize && checkCell(i + 10)) closedNeighbors.push(i + 10);
-  // it will be defined anyway cuz getNeighbors can be called only from openCell
-  // eslint-disable-next-line no-use-before-define
-  closedNeighbors.forEach((el) => openCell(el));
+  if (checkCell(i - 10)) closedNeighbors.push(i - 10);
+  if (checkCell(i + 10)) closedNeighbors.push(i + 10);
+  return closedNeighbors;
 };
 
 const openCell = (cell) => {
   const el = cells.elements[cell];
   const value = cells.data[cell];
   el.classList.add('cell--open');
-  cells.open.push(cell);
+  if (!cells.open.includes(cell)) cells.open.push(cell);
   if (value) {
     el.textContent = value;
   } else {
-    getNeighbors(cell);
+    const closedNeighbors = getNeighbors(cell);
+    closedNeighbors.forEach((x) => openCell(x));
   }
   checkGameEnd(value);
 };

@@ -15,7 +15,6 @@ const putFlag = (e) => {
     flag.splice(i, 1);
   }
   target.toggle('cell--flag');
-  console.log(cells);
 };
 
 export default putFlag;

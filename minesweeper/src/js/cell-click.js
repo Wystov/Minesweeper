@@ -15,6 +15,7 @@ const cellClick = (e) => {
   openCell(cell);
   state.turns += 1;
   console.log('turns', state.turns);
+  console.log(cells);
 };
 
 export default cellClick;
