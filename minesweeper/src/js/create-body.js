@@ -1,39 +1,58 @@
 import state from './state';
 import newGame from './new-game';
 import createElement from './create-element';
-import cellClick from './cell-click';
+import handleCellClick from './cell-click';
 import createField from './create-field';
 import putFlag from './put-flag';
-import page from './data';
 import showHistory from './show-history';
 import changeTheme from './change-theme';
+import switchSound from './switch-sound';
 
 const createBody = () => {
   newGame();
   document.body.classList.add('style', 'light-theme');
-  const container = createElement('div', ['container'], document.body);
-  page.elements.container = container;
-  const newGameBtn = createElement('div', ['new-game'], container, null, 'New Game');
-  newGameBtn.addEventListener('click', createBody);
-  const field = createElement('div', ['field'], container);
-  field.addEventListener('click', (e) => cellClick(e));
-  field.addEventListener('contextmenu', (e) => putFlag(e));
-  const counters = createElement('div', ['counters'], container);
-  const turns = createElement('div', ['turns'], counters, null, 'Turns: ');
-  page.elements.turnsCount = createElement('span', ['turns__count'], turns, null, '0');
-  const flags = createElement('div', ['flags'], counters, null, 'Flags: ');
-  page.elements.flagsCount = createElement('span', ['flags__count'], flags, null, '0');
-  const timer = createElement('div', ['timer'], counters, null, 'Time: ');
-  page.elements.timerCount = createElement('span', ['timer__count'], timer, null, '0');
-  const soundBtn = createElement('i', ['button', 'button__sound'], counters);
-  soundBtn.addEventListener('click', () => {
-    state.sound = !state.sound;
-    soundBtn.classList.toggle('sound-btn--mute');
+  const container = createElement({
+    classes: ['container'], parent: document.body, link: 'container',
   });
-  const historyBtn = createElement('i', ['button', 'button__history'], counters);
-  historyBtn.addEventListener('click', showHistory);
-  const themeBtn = createElement('i', ['button', 'button__theme'], counters);
-  themeBtn.addEventListener('click', changeTheme);
+  createElement({
+    classes: ['new-game'], parent: container, textContent: 'New Game', onClick: createBody,
+  });
+  const field = createElement({
+    classes: ['field'], parent: container,
+  });
+  field.addEventListener('click', (e) => handleCellClick(e));
+  field.addEventListener('contextmenu', (e) => putFlag(e));
+  const counters = createElement({
+    classes: ['counters'], parent: container,
+  });
+  const turns = createElement({
+    classes: ['turns'], parent: counters, textContent: 'Turns: ',
+  });
+  createElement({
+    tag: 'span', classes: ['turns__count'], parent: turns, textContent: '0', link: 'turnsCount',
+  });
+  const flags = createElement({
+    classes: ['flags'], parent: counters, textContent: 'Flags: ',
+  });
+  createElement({
+    tag: 'span', classes: ['flags__count'], parent: flags, textContent: '0', link: 'flagsCount',
+  });
+  const timer = createElement({
+    classes: ['timer'], parent: counters, textContent: 'Time: ',
+  });
+  createElement({
+    tag: 'span', classes: ['timer__count'], parent: timer, textContent: '0', link: 'timerCount',
+  });
+  createElement({
+    tag: 'i', classes: ['button', 'button__sound'], parent: counters, onClick: switchSound, link: 'soundBtn',
+  });
+  createElement({
+    tag: 'i', classes: ['button', 'button__history'], parent: counters, onClick: showHistory,
+  });
+  createElement({
+    tag: 'i', classes: ['button', 'button__theme'], parent: counters, onClick: changeTheme,
+  });
+
   const data = new Array(state.fieldSize).fill();
   createField(data, field);
 };

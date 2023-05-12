@@ -1,9 +1,21 @@
-const createElement = (tag, classes, parent, dataSet, textContent) => {
+import page from './data';
+
+const createElement = ({
+  tag = 'div',
+  classes = [],
+  parent = null,
+  dataSet = null,
+  textContent = null,
+  onClick = null,
+  link = null,
+}) => {
   const element = document.createElement(tag);
   element.classList.add(...classes);
-  if (parent) parent.append(element);
+  parent.append(element);
   if (textContent) element.innerHTML = textContent;
-  if (dataSet || dataSet === 0) element.dataset.cell = dataSet;
+  if (typeof dataSet === 'number') element.dataset.cell = dataSet;
+  if (typeof onClick === 'function') element.addEventListener('click', onClick);
+  if (link) page.elements[link] = element;
   return element;
 };
 

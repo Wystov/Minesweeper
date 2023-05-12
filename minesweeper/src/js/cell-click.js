@@ -4,7 +4,7 @@ import createData from './create-data';
 import openCell from './open-cell';
 import timer from './timer';
 
-const cellClick = (e) => {
+const handleCellClick = (e) => {
   if (!state.game) return;
   const target = e.target.classList;
   const { turns } = state;
@@ -20,4 +20,4 @@ const cellClick = (e) => {
   page.elements.turnsCount.textContent = state.turns;
 };
 
-export default cellClick;
+export default handleCellClick;

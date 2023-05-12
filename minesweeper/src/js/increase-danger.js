@@ -1,7 +1,6 @@
 const increaseDanger = (el) => {
   if (el !== undefined && typeof el === 'number') {
-    const count = el + 1;
-    return count;
+    return el + 1;
   }
   return el;
 };
