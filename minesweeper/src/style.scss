@@ -17,15 +17,22 @@
   border-radius: 5px;
 }
 
-.sound-btn {
+.button {
   display: block;
   width: 20px;
   height: 20px;
-  background-image: url('./assets/icons/volume.svg');
   background-size: contain;
 
-  &--mute {
-    background-image: url('./assets/icons/volume-mute.svg');
+  &__sound {
+    background-image: url('./assets/icons/volume.svg');
+
+    &--mute {
+      background-image: url('./assets/icons/volume-mute.svg');
+    }
+  }
+
+  &__history {
+    background-image: url('./assets/icons/history.svg');
   }
 }
 
@@ -100,22 +107,26 @@
   justify-content: space-around
 }
 
-.message {
-  display: none;
+.popup {
   max-width: 70vmin;
   padding: 3vmin 1.5vmin;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 5px;
-  background-color: rgba(128, 128, 128, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   position: absolute;
   left: 50%;
   top: 50vmin;
   transform: translate(-50%, -50%);
-  font-size: 5vmin;
-  font-weight: bold;
-  text-align: center;
 
-  &--active {
-    display: block;
+  &--message {
+    font-size: 5vmin;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &--history {
+    font-size: 3vmin;
+    font-weight: bold;
+    text-align: center;
   }
 }

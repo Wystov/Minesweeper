@@ -1,8 +1,8 @@
 const state = {
   game: true,
-  sound: true,
+  sound: false,
   fieldSize: 100,
-  mines: 10,
+  mines: 2,
   turns: 0,
 };
 

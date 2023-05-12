@@ -42,11 +42,11 @@ const openCell = (cell) => {
     if (state.sound) playSound(openSound);
     if (typeof value === 'number') el.classList.add(`color--${value}`);
     if (typeof value === 'string') el.classList.add('cell--bomb');
+    checkGameEnd(value);
   } else {
     const closedNeighbors = getNeighbors(cell);
     closedNeighbors.forEach((x) => openCell(x));
   }
-  checkGameEnd(value);
 };
 
 export default openCell;
