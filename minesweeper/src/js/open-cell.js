@@ -41,6 +41,7 @@ const openCell = (cell) => {
     el.innerHTML = value;
     if (state.sound) playSound(openSound);
     if (typeof value === 'number') el.classList.add(`color--${value}`);
+    if (typeof value === 'string') el.classList.add('cell--bomb');
   } else {
     const closedNeighbors = getNeighbors(cell);
     closedNeighbors.forEach((x) => openCell(x));

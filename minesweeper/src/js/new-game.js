@@ -3,7 +3,7 @@ import page from './data';
 
 const newGame = () => {
   if (page.elements.message) {
-    page.elements?.message.classList.remove('message--active');
+    page.elements.message.classList.remove('message--active');
   }
   clearInterval(page.timerId);
   document.body.innerHTML = '';

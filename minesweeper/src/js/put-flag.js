@@ -10,16 +10,17 @@ const putFlag = (e) => {
   const cell = parseInt(e.target.dataset.cell, 10);
   if (!target.contains('cell') || page.cells.open.includes(cell)) return;
   const { flag } = page.cells;
+  const { flagsCount } = page.elements;
+  const currentFlagsCount = parseInt(flagsCount.textContent, 10);
   const i = flag.indexOf(cell);
   if (i === -1) {
-    if (flag.length >= state.mines) {
-      console.log('amount of flags used can"t be more then mines in the field');
-      return;
-    }
+    if (flag.length >= state.mines) return;
     e.target.innerHTML = '&#128681;';
+    flagsCount.textContent = `${currentFlagsCount + 1} / ${state.mines}`;
     flag.push(cell);
   } else {
     e.target.innerHTML = '';
+    flagsCount.textContent = `${currentFlagsCount - 1} / ${state.mines}`;
     flag.splice(i, 1);
   }
   if (state.sound) playSound(flagSound);

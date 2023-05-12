@@ -41,6 +41,20 @@
   gap: 0.5vmin;
 }
 
+@keyframes bomb {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .cell {
   cursor: pointer;
   font-size: 5vmin;
@@ -52,6 +66,11 @@
 
   &--open {
     background-color: #eaeaea;
+  }
+
+  &--bomb {
+    animation: bomb 1s;
+    background-color: transparent;
   }
 }
 

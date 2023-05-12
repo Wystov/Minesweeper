@@ -17,6 +17,8 @@ const createBody = () => {
   const counters = createElement('div', ['counters'], container);
   const turns = createElement('div', ['turns'], counters, null, 'Turns: ');
   page.elements.turnsCount = createElement('span', ['turns__count'], turns, null, '0');
+  const flags = createElement('div', ['flags'], counters, null, 'Flags: ');
+  page.elements.flagsCount = createElement('span', ['flags__count'], flags, null, '0');
   const soundBtn = createElement('i', ['sound-btn'], counters);
   soundBtn.addEventListener('click', () => {
     state.sound = !state.sound;
