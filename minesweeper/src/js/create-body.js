@@ -6,9 +6,11 @@ import createField from './create-field';
 import putFlag from './put-flag';
 import page from './data';
 import showHistory from './show-history';
+import changeTheme from './change-theme';
 
 const createBody = () => {
   newGame();
+  document.body.classList.add('style', 'light-theme');
   const container = createElement('div', ['container'], document.body);
   page.elements.container = container;
   const newGameBtn = createElement('div', ['new-game'], container, null, 'New Game');
@@ -30,6 +32,8 @@ const createBody = () => {
   });
   const historyBtn = createElement('i', ['button', 'button__history'], counters);
   historyBtn.addEventListener('click', showHistory);
+  const themeBtn = createElement('i', ['button', 'button__theme'], counters);
+  themeBtn.addEventListener('click', changeTheme);
   const data = new Array(state.fieldSize).fill();
   createField(data, field);
 };

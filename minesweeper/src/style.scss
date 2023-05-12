@@ -1,3 +1,23 @@
+.light-theme {
+  --body-bg: white;
+  --button-bg: antiquewhite;
+  --cell-bg: #b5b6b6;
+  --open-cell-bg: #eaeaea;
+  --main-font: black;
+}
+
+.dark-theme {
+  --body-bg: #1C1C1C;
+  --button-bg: #FADF00;
+  --cell-bg: #263138;
+  --open-cell-bg: #36454f;
+  --main-font: white;
+}
+
+.style {
+  background-color: var(--body-bg);
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr;
@@ -5,6 +25,7 @@
   gap: 2vmin;
   width: 80vmin;
   margin: auto;
+  color: var(--main-font);
 }
 
 .new-game {
@@ -13,7 +34,7 @@
   text-align: center;
   padding: 5px 10px;
   margin: auto;
-  background-color: antiquewhite;
+  background-color: var(--button-bg);
   border-radius: 5px;
 }
 
@@ -33,6 +54,10 @@
 
   &__history {
     background-image: url('./assets/icons/history.svg');
+  }
+
+  &__theme {
+    background-image: url('./assets/icons/theme.svg');
   }
 }
 
@@ -69,10 +94,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #b5b6b6;
+  background-color: var(--cell-bg);
 
   &--open {
-    background-color: #eaeaea;
+    background-color: var(--open-cell-bg);
   }
 
   &--bomb {
