@@ -14,20 +14,21 @@ const checkCell = (cell) => {
 
 const getNeighbors = (i) => {
   const closedNeighbors = [];
-  const isLeft = i % 10 === 0;
-  const isRight = (i + 1) % 10 === 0;
+  const fs = Math.sqrt(state.fieldSize); // field side size;
+  const isLeft = i % fs === 0;
+  const isRight = (i + 1) % fs === 0;
   if (!isLeft) {
     if (checkCell(i - 1)) closedNeighbors.push(i - 1);
-    if (checkCell(i - 11)) closedNeighbors.push(i - 11);
-    if (checkCell(i + 9)) closedNeighbors.push(i + 9);
+    if (checkCell(i - (fs + 1))) closedNeighbors.push(i - (fs + 1));
+    if (checkCell(i + (fs - 1))) closedNeighbors.push(i + (fs - 1));
   }
   if (!isRight) {
     if (checkCell(i + 1)) closedNeighbors.push(i + 1);
-    if (checkCell(i - 9)) closedNeighbors.push(i - 9);
-    if (checkCell(i + 11)) closedNeighbors.push(i + 11);
+    if (checkCell(i - (fs - 1))) closedNeighbors.push(i - (fs - 1));
+    if (checkCell(i + (fs + 1))) closedNeighbors.push(i + (fs + 1));
   }
-  if (checkCell(i - 10)) closedNeighbors.push(i - 10);
-  if (checkCell(i + 10)) closedNeighbors.push(i + 10);
+  if (checkCell(i - fs)) closedNeighbors.push(i - fs);
+  if (checkCell(i + fs)) closedNeighbors.push(i + fs);
   return closedNeighbors;
 };
 
@@ -39,11 +40,13 @@ const openCell = (cell) => {
   if (!cells.open.includes(cell)) cells.open.push(cell);
   if (value) {
     el.innerHTML = value;
-    if (state.sound) playSound(openSound);
     if (typeof value === 'number') el.classList.add(`color--${value}`);
+    if (!state.game) return;
     if (typeof value === 'string') el.classList.add('cell--bomb');
-    checkGameEnd(value);
+    if (state.sound) playSound(openSound);
+    checkGameEnd(value, openCell);
   } else {
+    if (!state.game) return;
     const closedNeighbors = getNeighbors(cell);
     closedNeighbors.forEach((x) => openCell(x));
   }

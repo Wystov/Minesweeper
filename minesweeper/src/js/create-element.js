@@ -4,6 +4,9 @@ const createElement = ({
   tag = 'div',
   classes = [],
   parent = null,
+  type = null,
+  name = null,
+  value = null,
   dataSet = null,
   textContent = null,
   onClick = null,
@@ -16,6 +19,9 @@ const createElement = ({
   if (typeof dataSet === 'number') element.dataset.cell = dataSet;
   if (typeof onClick === 'function') element.addEventListener('click', onClick);
   if (link) page.elements[link] = element;
+  if (type) element.type = type;
+  if (name) element.name = name;
+  if (value) element.value = value;
   return element;
 };
 

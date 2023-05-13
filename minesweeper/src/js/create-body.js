@@ -7,6 +7,8 @@ import putFlag from './put-flag';
 import showHistory from './show-history';
 import changeTheme from './change-theme';
 import switchSound from './switch-sound';
+import setDifficulty from './set-difficulty';
+import page from './data';
 
 const createBody = () => {
   newGame();
@@ -17,11 +19,18 @@ const createBody = () => {
   createElement({
     classes: ['new-game'], parent: container, textContent: 'New Game', onClick: createBody,
   });
+  let fieldSize;
+  if (state.fieldSize === 100) {
+    fieldSize = 'easy';
+  } else if (state.fieldSize === 225) {
+    fieldSize = 'medium';
+  } else if (state.fieldSize === 625) {
+    fieldSize = 'hard';
+  }
   const field = createElement({
-    classes: ['field'], parent: container,
+    classes: ['field', `field--${fieldSize}`], parent: container, onClick: handleCellClick,
   });
-  field.addEventListener('click', (e) => handleCellClick(e));
-  field.addEventListener('contextmenu', (e) => putFlag(e));
+  field.addEventListener('contextmenu', putFlag);
   const counters = createElement({
     classes: ['counters'], parent: container,
   });
@@ -52,8 +61,30 @@ const createBody = () => {
   createElement({
     tag: 'i', classes: ['button', 'button__theme'], parent: counters, onClick: changeTheme,
   });
+  const sizeForm = createElement({
+    tag: 'form', classes: ['size'], parent: counters,
+  });
+  const radioEasy = createElement({
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Easy',
+  });
+  createElement({
+    tag: 'input', classes: ['size__input'], parent: radioEasy, type: 'radio', name: 'size', value: '100', onClick: setDifficulty,
+  });
+  const radioMedium = createElement({
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Medium',
+  });
+  createElement({
+    tag: 'input', classes: ['size__input'], parent: radioMedium, type: 'radio', name: 'size', value: '225', onClick: setDifficulty,
+  });
+  const radioHard = createElement({
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Hard',
+  });
+  createElement({
+    tag: 'input', classes: ['size__input'], parent: radioHard, type: 'radio', name: 'size', value: '625', onClick: setDifficulty,
+  });
 
   const data = new Array(state.fieldSize).fill();
+  page.cells.data = data;
   createField(data, field);
 };
 

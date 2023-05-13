@@ -23,6 +23,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: 6vmin 1fr 6vmin;
   gap: 2vmin;
+  min-width: 500px;
   width: 80vmin;
   margin: auto;
   color: var(--main-font);
@@ -68,9 +69,25 @@
   max-width: 1200px;
   max-height: 1200px;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
   gap: 0.5vmin;
+
+  &--easy {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    --font-size: 5.5vmin;
+  }
+
+  &--medium {
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    --font-size: 3.5vmin;
+  }
+
+  &--hard {
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
+    --font-size: 1.9vmin;
+  }
 }
 
 @keyframes bomb {
@@ -89,7 +106,7 @@
 
 .cell {
   cursor: pointer;
-  font-size: 5vmin;
+  font-size: var(--font-size);
   font-weight: bold;
   display: flex;
   align-items: center;
