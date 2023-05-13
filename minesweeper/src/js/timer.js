@@ -2,8 +2,8 @@ import page from './data';
 
 const timer = () => {
   const { timerCount } = page.elements;
-  const time = parseInt(timerCount.textContent, 10) + 1;
-  timerCount.textContent = `${time} s`;
+  page.time = parseInt(page.time, 10) + 1;
+  timerCount.textContent = `${page.time} s`;
 };
 
 export default timer;

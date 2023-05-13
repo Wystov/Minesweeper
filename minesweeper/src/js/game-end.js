@@ -7,7 +7,8 @@ import saveLastResult from './save-history';
 import createPopup from './create-popup';
 
 const checkGameEnd = (value, openCell) => {
-  const { fieldSize, mines, turns } = state;
+  const { fieldSize, mines } = state;
+  const { turns } = page;
   if (value === '&#128163;') {
     if (state.sound) playSound(loseSound);
     createPopup('Game over. Try again', 'lose', openCell);

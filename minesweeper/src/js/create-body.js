@@ -9,6 +9,7 @@ import changeTheme from './change-theme';
 import switchSound from './switch-sound';
 import setDifficulty from './set-difficulty';
 import page from './data';
+import continueGame from './continue-game';
 
 const createBody = () => {
   newGame();
@@ -16,9 +17,17 @@ const createBody = () => {
   const container = createElement({
     classes: ['container'], parent: document.body, link: 'container',
   });
-  createElement({
-    classes: ['new-game'], parent: container, textContent: 'New Game', onClick: createBody,
+  const playBtnContainer = createElement({
+    classes: ['play-btn-container'], parent: container,
   });
+  createElement({
+    classes: ['new-game'], parent: playBtnContainer, textContent: 'New Game', onClick: createBody,
+  });
+  if (page.lastGame) {
+    createElement({
+      classes: ['continue-game'], parent: playBtnContainer, textContent: 'Continue', onClick: continueGame, link: 'continueBtn',
+    });
+  }
   let fieldSize;
   if (state.fieldSize === 100) {
     fieldSize = 'easy';
@@ -28,7 +37,7 @@ const createBody = () => {
     fieldSize = 'hard';
   }
   const field = createElement({
-    classes: ['field', `field--${fieldSize}`], parent: container, onClick: handleCellClick,
+    classes: ['field', `field--${fieldSize}`], parent: container, onClick: handleCellClick, link: 'field',
   });
   field.addEventListener('contextmenu', putFlag);
   const counters = createElement({

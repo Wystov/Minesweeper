@@ -3,9 +3,9 @@ import page from './data';
 
 const createField = (data, container) => {
   page.cells.elements = [];
-  data.forEach((el, i) => {
+  data.forEach((_, i) => {
     const cell = createElement({
-      classes: ['cell'], parent: container, dataSet: i, textContent: el,
+      classes: ['cell'], parent: container, dataSet: i,
     });
     page.cells.elements.push(cell);
   });

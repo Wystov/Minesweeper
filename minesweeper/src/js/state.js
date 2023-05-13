@@ -4,7 +4,6 @@ class Settings {
     this.sound = true;
     this.fieldSize = 100;
     this.mines = 10;
-    this.turns = 0;
     this.theme = ['style', 'light-theme'];
   }
 
@@ -19,7 +18,6 @@ class Settings {
       this.sound = savedData.sound;
       this.fieldSize = savedData.fieldSize;
       this.mines = savedData.mines;
-      this.turns = savedData.turns;
       this.theme = savedData.theme;
     }
   }

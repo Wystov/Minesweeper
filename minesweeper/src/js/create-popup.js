@@ -10,6 +10,7 @@ const createPopup = (text, lose, openCell) => {
     textContent: text,
   });
   clearInterval(page.timerId);
+  page.time = 0;
   state.game = false;
   if (lose) {
     createElement({

@@ -5,7 +5,7 @@ const newGame = () => {
   clearInterval(page.timerId);
   document.body.innerHTML = '';
   state.game = true;
-  state.turns = 0;
+  page.turns = 0;
   page.elements.length = 0;
   Object.values(page.cells).forEach((arr) => {
     const newArr = arr;
