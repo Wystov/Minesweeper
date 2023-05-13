@@ -4,6 +4,7 @@ import page from './data';
 const switchSound = () => {
   state.sound = !state.sound;
   page.elements.soundBtn.classList.toggle('button__sound--mute');
+  state.save();
 };
 
 export default switchSound;

@@ -12,7 +12,7 @@ import page from './data';
 
 const createBody = () => {
   newGame();
-  document.body.classList.add('style', 'light-theme');
+  document.body.classList.add(...state.theme);
   const container = createElement({
     classes: ['container'], parent: document.body, link: 'container',
   });
@@ -52,9 +52,10 @@ const createBody = () => {
   createElement({
     tag: 'span', classes: ['timer__count'], parent: timer, textContent: '0', link: 'timerCount',
   });
-  createElement({
+  const soundBtn = createElement({
     tag: 'i', classes: ['button', 'button__sound'], parent: counters, onClick: switchSound, link: 'soundBtn',
   });
+  if (!state.sound) soundBtn.classList.add('button__sound--mute');
   createElement({
     tag: 'i', classes: ['button', 'button__history'], parent: counters, onClick: showHistory,
   });
@@ -82,6 +83,7 @@ const createBody = () => {
   createElement({
     tag: 'input', classes: ['size__input'], parent: radioHard, type: 'radio', name: 'size', value: '625', onClick: setDifficulty,
   });
+  sizeForm.querySelector(`input[value='${state.fieldSize}']`).checked = true;
 
   const data = new Array(state.fieldSize).fill();
   page.cells.data = data;

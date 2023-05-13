@@ -1,5 +1,10 @@
+import state from './state';
+
 const changeTheme = () => {
-  document.body.classList.toggle('dark-theme');
+  const { body } = document;
+  body.classList.toggle('dark-theme');
+  state.theme = body.className.split(' ');
+  state.save();
 };
 
 export default changeTheme;

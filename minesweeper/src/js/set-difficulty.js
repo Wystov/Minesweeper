@@ -11,6 +11,7 @@ const setDifficulty = (event) => {
   }
   const radio = event.target;
   radio.checked = true;
+  state.save();
 };
 
 export default setDifficulty;
