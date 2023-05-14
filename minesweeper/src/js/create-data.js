@@ -4,6 +4,8 @@ import increaseDanger from './increase-danger';
 import page from './data';
 
 const createData = (firstClick) => {
+  page.removeSave();
+  if (page.elements.continueBtn) page.elements.continueBtn.remove();
   const { fieldSize, mines } = state;
   const data = new Array(fieldSize).fill(0);
   const fs = Math.sqrt(fieldSize); // field side size;
