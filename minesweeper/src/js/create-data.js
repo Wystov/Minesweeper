@@ -5,6 +5,7 @@ import page from './data';
 
 const createData = (firstClick) => {
   page.removeSave();
+  page.time = 0;
   if (page.elements.continueBtn) page.elements.continueBtn.remove();
   const { fieldSize, mines } = state;
   const data = new Array(fieldSize).fill(0);
