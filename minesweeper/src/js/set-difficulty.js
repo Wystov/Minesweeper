@@ -1,4 +1,5 @@
 import state from './state';
+import page from './data';
 
 const setDifficulty = (event) => {
   state.fieldSize = parseInt(event.target.value, 10);
@@ -9,6 +10,7 @@ const setDifficulty = (event) => {
   } else if (state.fieldSize === 625) {
     state.mines = 99;
   }
+  page.elements.minesInput.value = state.mines;
   const radio = event.target;
   radio.checked = true;
   state.save();

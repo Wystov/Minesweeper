@@ -42,7 +42,7 @@ const showSettings = () => {
     tag: 'p', classes: ['settings__title'], parent: minesSet, textContent: 'Mines amount',
   });
   const minesInput = createElement({
-    tag: 'input', classes: ['size__input'], parent: minesSet, type: 'number',
+    tag: 'input', classes: ['size__input'], parent: minesSet, type: 'number', link: 'minesInput',
   });
   minesInput.value = state.mines;
   minesInput.min = 10;
@@ -52,6 +52,7 @@ const showSettings = () => {
     if (minesInput.value > 99) minesInput.value = 99;
     if (minesInput.value < 10) minesInput.value = 10;
     state.mines = minesInput.value;
+    state.save();
   });
 };
 
