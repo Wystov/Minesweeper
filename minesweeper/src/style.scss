@@ -4,6 +4,15 @@
   --cell-bg: #b5b6b6;
   --open-cell-bg: #eaeaea;
   --main-font: black;
+  --volume-icon: url('./assets/icons/volume.svg'), transparent;
+  --volume-icon-off: url('./assets/icons/volume-mute.svg'), transparent;
+  --theme-icon: url('./assets/icons/sun.svg'), transparent;
+  --history-icon: url('./assets/icons/history.svg'), transparent;
+  --settings-icon: url('./assets/icons/settings.svg'), transparent;
+  --turns-icon: url('./assets/icons/turn.svg');
+  --flag-icon: url('./assets/icons/flag.svg');
+  --time-icon: url('./assets/icons/time.svg');
+  --border: black;
 }
 
 .dark-theme {
@@ -12,66 +21,129 @@
   --cell-bg: #263138;
   --open-cell-bg: #36454f;
   --main-font: white;
+  --volume-icon: url('./assets/icons/volume-dark.svg'), transparent;
+  --volume-icon-off: url('./assets/icons/volume-mute-dark.svg'), transparent;
+  --theme-icon: url('./assets/icons/moon.svg'), transparent;
+  --history-icon: url('./assets/icons/history-dark.svg'), transparent;
+  --settings-icon: url('./assets/icons/settings-dark.svg'), transparent;
+  --turns-icon: url('./assets/icons/turn-dark.svg');
+  --flag-icon: url('./assets/icons/flag-dark.svg');
+  --time-icon: url('./assets/icons/time-dark.svg');
+  --border: white;
 }
 
 .style {
+  margin: 0;
   background-color: var(--body-bg);
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 6vmin 1fr 6vmin;
-  gap: 2vmin;
+  grid-template-rows: 4vmin 1fr 2vmin;
+  gap: 1.5vmin;
+  max-width: 1200px;
+  max-height: 1200px;
   min-width: 500px;
-  width: 80vmin;
+  width: 90vmin;
   margin: auto;
+  padding: 0 1.5vmin;
   color: var(--main-font);
 }
 
-.play-btn-container {
+.controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
+  &__toggle,
+  &__popup {
+    display: flex;
+    gap: 1vmin;
+  }
 }
 
 .new-game,
 .continue-game {
   cursor: pointer;
-  font-size: 3vmin;
+  font-size: 2vmin;
   text-align: center;
-  padding: 5px 10px;
-  margin: auto;
+  padding: 0.5vmin 2vmin;
   background-color: var(--button-bg);
-  border-radius: 5px;
+  border-radius: 0 0 1vmin 1vmin;
 }
 
-.button {
+.button,
+.turns__icon,
+.flags__icon,
+.timer__icon {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 3vmin;
+  height: 3vmin;
   background-size: contain;
+  background-repeat: no-repeat;
 
   &__sound {
-    background-image: url('./assets/icons/volume.svg');
+    background: var(--volume-icon);
 
     &--mute {
-      background-image: url('./assets/icons/volume-mute.svg');
+      background: var(--volume-icon-off)
     }
   }
 
-  &__history {
-    background-image: url('./assets/icons/history.svg');
+  &__theme {
+    background: var(--theme-icon);
   }
 
-  &__theme {
-    background-image: url('./assets/icons/theme.svg');
+  &__history {
+    background: var(--history-icon);
   }
+
+  &__settings {
+    background: var(--settings-icon);
+  }
+
+  &__sound,
+  &__theme,
+  &__settings,
+  &__history {
+    cursor: pointer;
+    align-self: center;
+    border: 0.25vmin solid var(--border);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0.5vmin;
+    border-radius: 0 0 1vmin 1vmin;
+  }
+}
+
+.turns,
+.flags,
+.timer,
+.counters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vmin;
+}
+
+.turns__icon {
+  background-image: var(--turns-icon);
+}
+
+.flags__icon {
+  background-image: var(--flag-icon);
+}
+
+.timer__icon {
+  background-image: var(--time-icon);
 }
 
 .field {
   margin: auto;
-  height: 80vmin;
-  width: 80vmin;
+  height: 90vmin;
+  width: 90vmin;
+  min-width: 500px;
+  min-height: 500px;
   max-width: 1200px;
   max-height: 1200px;
   display: grid;

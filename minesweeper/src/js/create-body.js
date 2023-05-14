@@ -5,11 +5,11 @@ import handleCellClick from './cell-click';
 import createField from './create-field';
 import putFlag from './put-flag';
 import showHistory from './show-history';
-import changeTheme from './change-theme';
-import switchSound from './switch-sound';
-import setDifficulty from './set-difficulty';
 import page from './data';
 import continueGame from './continue-game';
+import switchSound from './switch-sound';
+import changeTheme from './change-theme';
+import showSettings from './show-settings';
 
 const createBody = () => {
   newGame();
@@ -17,17 +17,36 @@ const createBody = () => {
   const container = createElement({
     classes: ['container'], parent: document.body, link: 'container',
   });
-  const playBtnContainer = createElement({
-    classes: ['play-btn-container'], parent: container,
+  const controls = createElement({
+    classes: ['controls'], parent: container,
+  });
+  const controlsToggle = createElement({
+    classes: ['controls__toggle'], parent: controls,
+  });
+  const soundIcon = createElement({
+    tag: 'i', classes: ['button', 'button__sound'], parent: controlsToggle, onClick: switchSound, link: 'soundBtn',
+  });
+  if (!state.sound) soundIcon.classList.add('button__sound--mute');
+  createElement({
+    tag: 'i', classes: ['button', 'button__theme'], parent: controlsToggle, onClick: changeTheme, link: 'themeBtn',
   });
   createElement({
-    classes: ['new-game'], parent: playBtnContainer, textContent: 'New Game', onClick: createBody,
+    classes: ['new-game'], parent: controls, textContent: 'New Game', onClick: createBody,
   });
   if (page.lastGame) {
     createElement({
-      classes: ['continue-game'], parent: playBtnContainer, textContent: 'Continue', onClick: continueGame, link: 'continueBtn',
+      classes: ['continue-game'], parent: controls, textContent: 'Continue', onClick: continueGame, link: 'continueBtn',
     });
   }
+  const controlsPopup = createElement({
+    classes: ['controls__popup'], parent: controls,
+  });
+  createElement({
+    tag: 'i', classes: ['button', 'button__history'], parent: controlsPopup, onClick: showHistory,
+  });
+  createElement({
+    tag: 'i', classes: ['button', 'button__settings'], parent: controlsPopup, onClick: showSettings,
+  });
   let fieldSize;
   if (state.fieldSize === 100) {
     fieldSize = 'easy';
@@ -44,55 +63,32 @@ const createBody = () => {
     classes: ['counters'], parent: container,
   });
   const turns = createElement({
-    classes: ['turns'], parent: counters, textContent: 'Turns: ',
+    classes: ['turns'], parent: counters,
+  });
+  createElement({
+    tag: 'i', classes: ['turns__icon'], parent: turns,
   });
   createElement({
     tag: 'span', classes: ['turns__count'], parent: turns, textContent: '0', link: 'turnsCount',
   });
   const flags = createElement({
-    classes: ['flags'], parent: counters, textContent: 'Flags: ',
+    classes: ['flags'], parent: counters,
   });
   createElement({
-    tag: 'span', classes: ['flags__count'], parent: flags, textContent: '0', link: 'flagsCount',
+    tag: 'i', classes: ['flags__icon'], parent: flags,
+  });
+  createElement({
+    tag: 'span', classes: ['flags__count'], parent: flags, textContent: `0 / ${state.mines}`, link: 'flagsCount',
   });
   const timer = createElement({
-    classes: ['timer'], parent: counters, textContent: 'Time: ',
+    classes: ['timer'], parent: counters,
   });
   createElement({
-    tag: 'span', classes: ['timer__count'], parent: timer, textContent: '0', link: 'timerCount',
-  });
-  const soundBtn = createElement({
-    tag: 'i', classes: ['button', 'button__sound'], parent: counters, onClick: switchSound, link: 'soundBtn',
-  });
-  if (!state.sound) soundBtn.classList.add('button__sound--mute');
-  createElement({
-    tag: 'i', classes: ['button', 'button__history'], parent: counters, onClick: showHistory,
+    tag: 'i', classes: ['timer__icon'], parent: timer,
   });
   createElement({
-    tag: 'i', classes: ['button', 'button__theme'], parent: counters, onClick: changeTheme,
+    tag: 'span', classes: ['timer__count'], parent: timer, textContent: '0 s', link: 'timerCount',
   });
-  const sizeForm = createElement({
-    tag: 'form', classes: ['size'], parent: counters,
-  });
-  const radioEasy = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Easy',
-  });
-  createElement({
-    tag: 'input', classes: ['size__input'], parent: radioEasy, type: 'radio', name: 'size', value: '100', onClick: setDifficulty,
-  });
-  const radioMedium = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Medium',
-  });
-  createElement({
-    tag: 'input', classes: ['size__input'], parent: radioMedium, type: 'radio', name: 'size', value: '225', onClick: setDifficulty,
-  });
-  const radioHard = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: 'Hard',
-  });
-  createElement({
-    tag: 'input', classes: ['size__input'], parent: radioHard, type: 'radio', name: 'size', value: '625', onClick: setDifficulty,
-  });
-  sizeForm.querySelector(`input[value='${state.fieldSize}']`).checked = true;
 
   const data = new Array(state.fieldSize).fill();
   page.cells.data = data;

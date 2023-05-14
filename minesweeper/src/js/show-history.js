@@ -14,7 +14,7 @@ const showHistory = () => {
         tag: 'p',
         classes: ['history__result'],
         parent: historyEl,
-        textContent: `${i + 1}. win on ${result[0]} mode in ${result[1]} turns and ${result[2]} seconds`,
+        textContent: `${i + 1}. You found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
       });
     });
   }

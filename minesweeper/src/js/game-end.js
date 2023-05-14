@@ -17,8 +17,9 @@ const checkGameEnd = (value, openCell) => {
   if (page.cells.open.length === fieldSize - mines) {
     if (state.sound) playSound(winSound);
     const time = parseInt(page.elements.timerCount.textContent, 10);
-    createPopup(`Hooray! You found all mines in ${time} seconds and ${turns} moves!`);
-    saveLastResult(turns, time);
+    const fieldSide = Math.sqrt(state.fieldSize);
+    createPopup(`Hooray! You found ${state.mines} mines on field ${fieldSide}x${fieldSide} in ${time} seconds and ${turns} moves!`);
+    saveLastResult(fieldSide, state.mines, turns, time);
   }
 };
 
