@@ -1,9 +1,9 @@
 .light-theme {
-  --body-bg: white;
-  --button-bg: antiquewhite;
-  --cell-bg: #b5b6b6;
-  --open-cell-bg: #eaeaea;
-  --main-font: black;
+  --body-bg: #abd1c6;
+  --button-bg: #FADF00;
+  --cell-bg: #96b7ad;
+  --open-cell-bg: #abd1c6;
+  --main-font: #001e1d;
   --volume-icon: url('./assets/icons/volume.svg');
   --volume-icon-off: url('./assets/icons/volume-mute.svg');
   --theme-icon: url('./assets/icons/sun.svg');
@@ -12,7 +12,7 @@
   --turns-icon: url('./assets/icons/turn.svg');
   --flag-icon: url('./assets/icons/flag.svg');
   --time-icon: url('./assets/icons/time.svg');
-  --border: white;
+  --border: #abd1c6;
 }
 
 .dark-theme {

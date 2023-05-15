@@ -13,7 +13,8 @@
 .continue-game {
   cursor: pointer;
   font-size: 2.5vmin;
-  color: black;
+  font-weight: bold;
+  color: #001e1d;
   text-align: center;
   padding: 0.5vmin 2vmin;
   background-color: var(--button-bg);
@@ -21,7 +22,8 @@
 
 .open-field {
   cursor: pointer;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--main-font);
+  font-size: 2vmin;
 }
 
 .button,
