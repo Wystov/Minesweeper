@@ -13,6 +13,7 @@
   background-color: var(--body-bg);
   overflow: hidden;
   gap: 1.5vmin;
+  animation: opacity 0.5s;
 
   &__container {
     max-width: 1200px;
@@ -26,15 +27,16 @@
   }
 
   &__history {
-    font-size: 3vmin;
-    font-weight: bold;
-    text-align: center;
+    width: 90vw;
+    max-width: 600px;
+    text-align: left;
   }
 }
 
-.history__result,
 .popup__message {
-
   margin: 1.5vmin;
+}
 
+.history__result {
+  font-size: 2vmin;
 }

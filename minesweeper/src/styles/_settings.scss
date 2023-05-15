@@ -1,12 +1,28 @@
 .settings {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
 
-  gap: 30px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    gap: 5vmin;
+  }
+
+
+  &__title {
+    text-align: center;
+  }
 
   &__item {
+    display: flex;
+    align-items: center;
     margin: auto;
+    gap: 2vmin;
+
+    &.size,
+    &.mines {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__apply {
@@ -26,5 +42,15 @@
     width: 5vmin;
     height: 5vmin;
     border-radius: 5vmin;
+  }
+}
+
+.size {
+  &__label {
+    font-size: 2vmin;
+  }
+
+  &__input {
+    margin: auto;
   }
 }

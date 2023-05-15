@@ -19,7 +19,7 @@ const checkGameEnd = (value, openCell) => {
   if (page.cells.open.length === fieldSize - mines) {
     if (state.sound) playSound(winSound);
     if (page.cells.open.length === 1) {
-      createPopup('Hooray! You win in... 1 move? Looks like a cheat. No one loves cheaters, don\'t do it anymore.', 'cheat');
+      createPopup('Hooray! You win in...1 move? Looks like a cheat. No one loves cheaters, don\'t do it anymore.', 'cheat');
       return;
     }
     const time = parseInt(page.elements.timerCount.textContent, 10);

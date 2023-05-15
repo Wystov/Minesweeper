@@ -8,33 +8,36 @@ const showSettings = (createBody) => {
     classes: ['popup', 'settings'],
     parent: page.elements.container,
   });
+  const container = createElement({
+    classes: ['settings__container'], parent: settings,
+  });
   const sizeForm = createElement({
-    tag: 'form', classes: ['settings__item', 'size'], parent: settings,
+    tag: 'form', classes: ['settings__item', 'size'], parent: container,
   });
   createElement({
     tag: 'p', classes: ['settings__title'], parent: sizeForm, textContent: 'Field size',
   });
   const radioEasy = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '10x10',
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '10x10  ',
   });
   createElement({
     tag: 'input', classes: ['size__input'], parent: radioEasy, type: 'radio', name: 'size', value: '100', onClick: setDifficulty,
   });
   const radioMedium = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '15x15',
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '15x15  ',
   });
   createElement({
     tag: 'input', classes: ['size__input'], parent: radioMedium, type: 'radio', name: 'size', value: '225', onClick: setDifficulty,
   });
   const radioHard = createElement({
-    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '25x25',
+    tag: 'label', classes: ['size__label'], parent: sizeForm, textContent: '25x25  ',
   });
   createElement({
     tag: 'input', classes: ['size__input'], parent: radioHard, type: 'radio', name: 'size', value: '625', onClick: setDifficulty,
   });
   sizeForm.querySelector(`input[value='${state.fieldSize}']`).checked = true;
   const minesSet = createElement({
-    classes: ['settings__item', 'mines'], parent: settings,
+    classes: ['settings__item', 'mines'], parent: container,
   });
   createElement({
     tag: 'p', classes: ['settings__title'], parent: minesSet, textContent: 'Mines amount',
@@ -51,7 +54,7 @@ const showSettings = (createBody) => {
     if (minesInput.value < 10) minesInput.value = 10;
   });
   const buttons = createElement({
-    classes: ['settings__item'], parent: settings,
+    classes: ['settings__item'], parent: container,
   });
   const applyBtn = createElement({
     classes: ['settings__apply'],
