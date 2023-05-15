@@ -3,8 +3,6 @@ import page from './data';
 import createData from './create-data';
 import openCell from './open-cell';
 import timer from './timer';
-import playSound from './play-sound';
-import openSound from '../assets/sounds/open.wav';
 
 const handleCellClick = (e) => {
   if (!state.game) return;
@@ -12,7 +10,7 @@ const handleCellClick = (e) => {
   const { open, flag } = page.cells;
   const cell = parseInt(e.target.dataset.cell, 10);
   if (!target.contains('cell') || open.includes(cell) || flag.includes(cell)) return;
-  if (state.sound) playSound(openSound);
+  if (state.sound) page.sound.click.play();
   if (page.turns === 0) {
     createData(cell);
     page.timerId = setInterval(timer, 1000);

@@ -1,7 +1,5 @@
 import page from './data';
 import state from './state';
-import playSound from './play-sound';
-import flagSound from '../assets/sounds/flag.wav';
 
 const putFlag = (e, el) => {
   let target;
@@ -25,7 +23,7 @@ const putFlag = (e, el) => {
       flagsCount.textContent = `${currentFlagsCount - 1} / ${state.mines}`;
       flag.splice(i, 1);
     }
-    if (state.sound) playSound(flagSound);
+    if (state.sound) page.sound.flag.play();
     target.toggle('cell--flag');
   } else if (el) {
     target = page.cells.elements[el];

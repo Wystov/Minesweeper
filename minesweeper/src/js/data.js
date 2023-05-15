@@ -1,4 +1,8 @@
 import state from './state';
+import openSound from '../assets/sounds/open.wav';
+import flagSound from '../assets/sounds/flag.wav';
+import winSound from '../assets/sounds/win.wav';
+import loseSound from '../assets/sounds/lose.wav';
 
 class Game {
   constructor() {
@@ -8,6 +12,12 @@ class Game {
       data: [],
       open: [],
       flag: [],
+    };
+    this.sound = {
+      click: new Audio(openSound),
+      flag: new Audio(flagSound),
+      win: new Audio(winSound),
+      lose: new Audio(loseSound),
     };
     this.turns = 0;
     this.time = 0;

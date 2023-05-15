@@ -1,8 +1,5 @@
 import state from './state';
 import page from './data';
-import playSound from './play-sound';
-import winSound from '../assets/sounds/win.wav';
-import loseSound from '../assets/sounds/lose.wav';
 import saveLastResult from './save-history';
 import createPopup from './create-popup';
 import fillProgressBar from './progress-bar';
@@ -11,13 +8,13 @@ const checkGameEnd = (value, openCell) => {
   const { fieldSize, mines } = state;
   const { turns } = page;
   if (value === '&#128163;') {
-    if (state.sound) playSound(loseSound);
+    if (state.sound) page.sound.lose.play();
     fillProgressBar(null, true);
     setTimeout(() => createPopup('Game over. Try again', false, openCell), 1000);
     return;
   }
   if (page.cells.open.length === fieldSize - mines) {
-    if (state.sound) playSound(winSound);
+    if (state.sound) page.sound.win.play();
     if (page.cells.open.length === 1) {
       createPopup('Hooray! You win in...1 move? Looks like a cheat. No one loves cheaters, don\'t do it anymore.', 'cheat');
       return;
