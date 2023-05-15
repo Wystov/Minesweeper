@@ -57,6 +57,10 @@ const showSettings = (createBody) => {
     classes: ['settings__apply'],
     parent: buttons,
     onClick: () => {
+      if (page.lastGame) {
+        page.elements.continueBtn.remove();
+        page.removeSave();
+      }
       const size = sizeForm.querySelector('input:checked').value;
       const mines = minesInput.value;
       state.fieldSize = +size;

@@ -11,4 +11,6 @@
   gap: 1vmin;
   padding: 1vmin;
   color: var(--main-font);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }

@@ -31,7 +31,16 @@ const createBody = () => {
     tag: 'i', classes: ['button', 'button__theme'], parent: controlsToggle, onClick: changeTheme, link: 'themeBtn',
   });
   createElement({
-    classes: ['new-game'], parent: controls, textContent: 'New Game', onClick: createBody,
+    classes: ['new-game'],
+    parent: controls,
+    textContent: 'New Game',
+    onClick: () => {
+      if (page.lastGame) {
+        page.elements.continueBtn.remove();
+        page.removeSave();
+      }
+      createBody();
+    },
   });
   if (page.lastGame) {
     createElement({

@@ -11,7 +11,7 @@ const checkGameEnd = (value, openCell) => {
   const { turns } = page;
   if (value === '&#128163;') {
     if (state.sound) playSound(loseSound);
-    createPopup('Game over. Try again', 'lose', openCell);
+    setTimeout(() => createPopup('Game over. Try again', 'lose', openCell), 1000);
     return;
   }
   if (page.cells.open.length === fieldSize - mines) {
