@@ -12,11 +12,11 @@
 .new-game,
 .continue-game {
   cursor: pointer;
-  font-size: 2vmin;
+  font-size: 2.5vmin;
+  color: black;
   text-align: center;
   padding: 0.5vmin 2vmin;
   background-color: var(--button-bg);
-  border: 2px solid var(--border);
 }
 
 .button,

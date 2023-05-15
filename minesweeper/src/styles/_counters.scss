@@ -2,6 +2,7 @@
   font-size: 3vmin;
   display: flex;
   justify-content: space-around;
+  text-transform: lowercase;
 }
 
 .turns,
@@ -32,11 +33,11 @@
   &__value {
     width: 0;
     height: 5px;
-    background-color: aqua;
+    background-color: white;
     transition: 0.5s;
 
     &--win {
-      background-color: gold;
+      background-color: var(--button-bg);
     }
   }
 }
