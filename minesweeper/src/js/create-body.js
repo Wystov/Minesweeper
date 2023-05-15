@@ -21,7 +21,7 @@ const createBody = () => {
     classes: ['controls'], parent: container,
   });
   const controlsToggle = createElement({
-    classes: ['controls__toggle'], parent: controls,
+    classes: ['controls__toggle'], parent: controls, link: 'controlsToggle',
   });
   const soundIcon = createElement({
     tag: 'i', classes: ['button', 'button__sound'], parent: controlsToggle, onClick: switchSound, link: 'soundBtn',
@@ -30,7 +30,7 @@ const createBody = () => {
   createElement({
     tag: 'i', classes: ['button', 'button__theme'], parent: controlsToggle, onClick: changeTheme, link: 'themeBtn',
   });
-  createElement({
+  page.elements.newGameBtn = createElement({
     classes: ['new-game'],
     parent: controls,
     textContent: 'New Game',

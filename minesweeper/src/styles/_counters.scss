@@ -39,5 +39,9 @@
     &--win {
       background-color: var(--button-bg);
     }
+
+    &--lose {
+      background-color: red;
+    }
   }
 }

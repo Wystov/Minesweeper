@@ -1,23 +1,40 @@
 .popup {
-  max-width: 70vmin;
-  padding: 3vmin 1.5vmin;
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.6);
   position: absolute;
-  left: 50%;
-  top: 50vmin;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-bg);
+  overflow: hidden;
+  gap: 1.5vmin;
 
-  &--message {
+  &__container {
+    max-width: 1200px;
+    width: 90vw;
+  }
+
+  &__message {
     font-size: 5vmin;
     font-weight: bold;
     text-align: center;
   }
 
-  &--history {
+  &__history {
     font-size: 3vmin;
     font-weight: bold;
     text-align: center;
   }
+}
+
+.history__result,
+.popup__message {
+
+  margin: 1.5vmin;
+
 }

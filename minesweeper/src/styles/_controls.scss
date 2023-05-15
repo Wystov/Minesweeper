@@ -19,6 +19,11 @@
   background-color: var(--button-bg);
 }
 
+.open-field {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+
 .button,
 .turns__icon,
 .flags__icon,

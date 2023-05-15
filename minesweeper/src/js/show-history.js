@@ -1,14 +1,16 @@
 import page from './data';
 import createElement from './create-element';
-import destroyPopup from './destroy-popup';
 
 const showHistory = () => {
-  const historyEl = createElement({ classes: ['popup', 'popup--history'], parent: page.elements.container });
+  const historyEl = createElement({ classes: ['popup', 'popup__history'], parent: page.elements.container });
   if (!page.lastResults.length) {
     createElement({
       tag: 'p', classes: ['history__result'], parent: historyEl, textContent: 'No history',
     });
   } else {
+    createElement({
+      tag: 'p', classes: ['history__title'], parent: historyEl, textContent: 'Game history:',
+    });
     page.lastResults.forEach((result, i) => {
       createElement({
         tag: 'p',
@@ -18,8 +20,13 @@ const showHistory = () => {
       });
     });
   }
-
-  setTimeout(() => document.addEventListener('click', (e) => destroyPopup(historyEl, e)), 50);
+  createElement({
+    classes: ['settings__apply'],
+    parent: historyEl,
+    onClick: () => {
+      historyEl.remove();
+    },
+  });
 };
 
 export default showHistory;

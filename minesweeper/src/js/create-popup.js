@@ -1,28 +1,31 @@
 import createElement from './create-element';
-import destroyPopup from './destroy-popup';
-import state from './state';
 import page from './data';
+import state from './state';
 
-const createPopup = (text, lose, openCell) => {
-  const popup = createElement({
-    classes: ['popup', 'popup--message'],
-    parent: page.elements.container,
-    textContent: text,
-  });
+const createPopup = (text, cheat, openCell) => {
   clearInterval(page.timerId);
   page.time = 0;
   state.game = false;
-  if (lose) {
+  const popup = createElement({
+    classes: ['popup'],
+    parent: page.elements.container,
+  });
+  createElement({
+    classes: ['popup__container', 'popup__message'], parent: popup, textContent: text,
+  });
+  popup.append(page.elements.newGameBtn);
+  if (!cheat) {
     createElement({
       parent: popup,
-      textContent: 'Open field',
+      classes: ['open-field'],
+      textContent: 'show mines',
       onClick: () => {
         page.cells.elements.forEach((_, i) => openCell(i));
+        page.elements.controlsToggle.after(page.elements.newGameBtn);
         popup.remove();
       },
     });
   }
-  setTimeout(() => document.addEventListener('click', (e) => destroyPopup(popup, e)), 50);
 };
 
 export default createPopup;
