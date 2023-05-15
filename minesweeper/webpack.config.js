@@ -10,6 +10,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: '[contenthash].js',
   },
   devServer: {
     open: true,
@@ -35,7 +36,7 @@ const config = {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp|wav)$/i,
         type: 'asset',
         generator: {
-          filename: path.join('assets', '[name].[ext]'),
+          filename: path.join('assets', '[contenthash][ext]'),
         },
       },
     ],
@@ -46,8 +47,9 @@ module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
     config.devtool = false;
-
-    config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new MiniCssExtractPlugin({
+      filename: '[contenthash].css',
+    }));
   } else {
     config.mode = 'development';
     config.devtool = 'source-map';

@@ -1,0 +1,23 @@
+.popup {
+  max-width: 70vmin;
+  padding: 3vmin 1.5vmin;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  left: 50%;
+  top: 50vmin;
+  transform: translate(-50%, -50%);
+
+  &--message {
+    font-size: 5vmin;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &--history {
+    font-size: 3vmin;
+    font-weight: bold;
+    text-align: center;
+  }
+}

@@ -1,0 +1,26 @@
+.counters {
+  font-size: 3vmin;
+  display: flex;
+  justify-content: space-around;
+}
+
+.turns,
+.flags,
+.timer,
+.counters {
+  display: flex;
+  align-items: center;
+  gap: 1vmin;
+}
+
+.turns__icon {
+  background-image: var(--turns-icon);
+}
+
+.flags__icon {
+  background-image: var(--flag-icon);
+}
+
+.timer__icon {
+  background-image: var(--time-icon);
+}

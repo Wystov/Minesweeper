@@ -45,7 +45,7 @@ const createBody = () => {
     tag: 'i', classes: ['button', 'button__history'], parent: controlsPopup, onClick: showHistory,
   });
   createElement({
-    tag: 'i', classes: ['button', 'button__settings'], parent: controlsPopup, onClick: showSettings,
+    tag: 'i', classes: ['button', 'button__settings'], parent: controlsPopup, onClick: () => showSettings(createBody),
   });
   let fieldSize;
   if (state.fieldSize === 100) {

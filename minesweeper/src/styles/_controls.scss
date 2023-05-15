@@ -1,0 +1,63 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+
+  &__toggle,
+  &__popup {
+    display: flex;
+    gap: 3vmin;
+  }
+}
+
+.new-game,
+.continue-game {
+  cursor: pointer;
+  font-size: 2vmin;
+  text-align: center;
+  padding: 0.5vmin 2vmin;
+  background-color: var(--button-bg);
+  border: 2px solid var(--border);
+}
+
+.button,
+.turns__icon,
+.flags__icon,
+.timer__icon {
+  display: block;
+  min-width: 20px;
+  min-height: 20px;
+  width: 4vmin;
+  height: 4vmin;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__sound {
+    background-image: var(--volume-icon);
+
+    &--mute {
+      background-image: var(--volume-icon-off)
+    }
+  }
+
+  &__theme {
+    background-image: var(--theme-icon);
+  }
+
+  &__history {
+    background-image: var(--history-icon);
+  }
+
+  &__settings {
+    background-image: var(--settings-icon);
+  }
+
+  &__sound,
+  &__theme,
+  &__settings,
+  &__history {
+    cursor: pointer;
+    align-self: center;
+  }
+}

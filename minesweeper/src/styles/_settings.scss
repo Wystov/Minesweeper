@@ -1,0 +1,29 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+
+  &__item {
+    margin: auto;
+  }
+
+  &__apply {
+    background: url('./assets/icons/apply.svg'), green;
+  }
+
+  &__close {
+    background: url('./assets/icons/close.svg'), red;
+  }
+
+  &__apply,
+  &__close {
+    display: inline-block;
+    background-size: 4vmin;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 5vmin;
+  }
+}

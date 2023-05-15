@@ -1,10 +1,9 @@
 import createElement from './create-element';
 import setDifficulty from './set-difficulty';
-import destroyPopup from './destroy-popup';
 import state from './state';
 import page from './data';
 
-const showSettings = () => {
+const showSettings = (createBody) => {
   const settings = createElement({
     classes: ['popup', 'settings'],
     parent: page.elements.container,
@@ -34,7 +33,6 @@ const showSettings = () => {
     tag: 'input', classes: ['size__input'], parent: radioHard, type: 'radio', name: 'size', value: '625', onClick: setDifficulty,
   });
   sizeForm.querySelector(`input[value='${state.fieldSize}']`).checked = true;
-  setTimeout(() => document.addEventListener('click', (e) => destroyPopup(settings, e)), 50);
   const minesSet = createElement({
     classes: ['settings__item', 'mines'], parent: settings,
   });
@@ -51,8 +49,29 @@ const showSettings = () => {
   minesInput.addEventListener('focusout', () => {
     if (minesInput.value > 99) minesInput.value = 99;
     if (minesInput.value < 10) minesInput.value = 10;
-    state.mines = minesInput.value;
-    state.save();
+  });
+  const buttons = createElement({
+    classes: ['settings__item'], parent: settings,
+  });
+  const applyBtn = createElement({
+    classes: ['settings__apply'],
+    parent: buttons,
+    onClick: () => {
+      const size = sizeForm.querySelector('input:checked').value;
+      const mines = minesInput.value;
+      state.fieldSize = +size;
+      state.mines = Math.round(mines);
+      state.save();
+      createBody();
+    },
+  });
+  applyBtn.title = 'this will start new game';
+  createElement({
+    classes: ['settings__close'],
+    parent: buttons,
+    onClick: () => {
+      settings.remove();
+    },
   });
 };
 
