@@ -3,6 +3,7 @@ import state from './state';
 import checkGameEnd from './game-end';
 import playSound from './play-sound';
 import openSound from '../assets/sounds/open.wav';
+import fillProgressBar from './progress-bar';
 
 const checkCell = (cell) => {
   const { open, flag } = page.cells;
@@ -50,6 +51,7 @@ const openCell = (cell) => {
     const closedNeighbors = getNeighbors(cell);
     closedNeighbors.forEach((x) => openCell(x));
   }
+  fillProgressBar();
 };
 
 export default openCell;

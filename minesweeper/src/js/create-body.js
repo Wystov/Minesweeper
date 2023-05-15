@@ -68,6 +68,12 @@ const createBody = () => {
     classes: ['field', `field--${fieldSize}`], parent: container, onClick: handleCellClick, link: 'field',
   });
   field.addEventListener('contextmenu', putFlag);
+  const progressBar = createElement({
+    classes: ['progressbar'], parent: container,
+  });
+  createElement({
+    classes: ['progressbar__value'], parent: progressBar, link: 'progressBar',
+  });
   const counters = createElement({
     classes: ['counters'], parent: container,
   });
