@@ -1,8 +1,6 @@
 import page from './data';
 import state from './state';
 import checkGameEnd from './game-end';
-import playSound from './play-sound';
-import openSound from '../assets/sounds/open.wav';
 import fillProgressBar from './progress-bar';
 
 const checkCell = (cell) => {
@@ -44,7 +42,6 @@ const openCell = (cell) => {
     if (typeof value === 'number') el.classList.add(`color--${value}`);
     if (!state.game) return;
     if (typeof value === 'string') el.classList.add('cell--bomb');
-    if (state.sound) playSound(openSound);
     checkGameEnd(value, openCell);
   } else {
     if (!state.game) return;

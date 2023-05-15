@@ -33,8 +33,15 @@ const config = {
         use: [stylesHandler, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp|wav)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp)$/i,
         type: 'asset',
+        generator: {
+          filename: path.join('assets', '[contenthash][ext]'),
+        },
+      },
+      {
+        test: /\.(wav)$/i,
+        type: 'asset/resource',
         generator: {
           filename: path.join('assets', '[contenthash][ext]'),
         },
