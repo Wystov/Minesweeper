@@ -3,8 +3,6 @@
   height: 85vmin;
   width: 85vmin;
   display: grid;
-  min-width: 500px;
-  min-height: 500px;
 
   &--easy {
     grid-template-columns: repeat(10, 1fr);
