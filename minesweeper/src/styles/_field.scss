@@ -43,10 +43,11 @@
   }
 
   &--open {
+    cursor: default;
     background-color: var(--body-bg);
 
     &:hover {
-      cursor: default;
+
       box-shadow: none;
     }
   }

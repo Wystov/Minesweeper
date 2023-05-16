@@ -9,6 +9,7 @@ const checkGameEnd = (value, openCell) => {
   const { turns } = page;
   if (value === '&#128163;') {
     if (state.sound) page.sound.lose.play();
+    state.game = false;
     fillProgressBar(null, true);
     setTimeout(() => createPopup('Game over. Try again', false, openCell), 1000);
     return;

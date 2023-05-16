@@ -14,4 +14,13 @@
   font-family: 'Play', sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
+  @media (max-width: 650px) {
+    width: 97vmin;
+
+    .field {
+      height: 97vmin;
+      width: 97vmin;
+    }
+  }
 }
