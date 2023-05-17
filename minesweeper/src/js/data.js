@@ -21,7 +21,7 @@ class Game {
     };
     this.turns = 0;
     this.time = 0;
-    this.lastResults = JSON.parse(localStorage.getItem('minesweeper-top')) || [];
+    this.lastResults = JSON.parse(localStorage.getItem('minesweeper-history')) || [];
     this.lastGame = JSON.parse(localStorage.getItem('minesweeper-last-game'));
     this.lastTurns = localStorage.getItem('minesweeper-turns');
     this.lastTime = localStorage.getItem('minesweeper-time');

@@ -68,6 +68,15 @@ const showSettings = (createBody) => {
       const mines = minesInput.value;
       state.fieldSize = +size;
       state.mines = Math.round(mines);
+      if (state.fieldSize === 100 && state.mines === 10) {
+        state.mode = 'easy';
+      } else if (state.fieldSize === 225 && state.mines === 30) {
+        state.mode = 'medium';
+      } else if (state.fieldSize === 625 && state.mines === 99) {
+        state.mode = 'hard';
+      } else {
+        state.mode = 'custom';
+      }
       state.save();
       createBody();
     },

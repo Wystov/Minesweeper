@@ -40,7 +40,7 @@
 .history {
   &__list {
     max-height: 60vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__result {

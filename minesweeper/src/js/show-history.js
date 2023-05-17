@@ -19,7 +19,7 @@ const showHistory = () => {
         tag: 'li',
         classes: ['history__result'],
         parent: list,
-        textContent: `${result[4]}<br>you found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
+        textContent: `${result[4]} &#128640;${result[5]}<br>you found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
       });
     });
   }

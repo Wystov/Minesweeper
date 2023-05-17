@@ -5,6 +5,7 @@ class Settings {
     this.fieldSize = 100;
     this.mines = 10;
     this.theme = ['style', 'light-theme'];
+    this.mode = 'easy';
   }
 
   save() {
@@ -19,6 +20,7 @@ class Settings {
       this.fieldSize = savedData.fieldSize;
       this.mines = savedData.mines;
       this.theme = savedData.theme;
+      this.mode = savedData.mode;
     }
   }
 }
