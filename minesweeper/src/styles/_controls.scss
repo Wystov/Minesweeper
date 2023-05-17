@@ -18,6 +18,15 @@
   text-align: center;
   padding: 0.5vmin 2vmin;
   background-color: var(--button-bg);
+  transition: 0.1s;
+
+  &:hover {
+    outline: 2px solid white;
+  }
+
+  &:active {
+    outline: 4px solid white;
+  }
 }
 
 .open-field {
@@ -66,5 +75,14 @@
   &__history {
     cursor: pointer;
     align-self: center;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1) rotate(0);
+    }
+
+    &:active {
+      transform: scale(1.1) rotate(360deg);
+    }
   }
 }

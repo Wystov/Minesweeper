@@ -9,14 +9,17 @@ const showHistory = () => {
     });
   } else {
     const container = createElement({
-      classes: ['popup__container', 'popup__message', 'popup__history'], parent: historyEl, textContent: 'Game history:',
+      classes: ['popup__container', 'popup__message', 'popup__history'], parent: historyEl, textContent: 'Wins history:',
     });
-    page.lastResults.forEach((result, i) => {
+    const list = createElement({
+      tag: 'ul', classes: ['history__list'], parent: container,
+    });
+    page.lastResults.forEach((result) => {
       createElement({
-        tag: 'p',
+        tag: 'li',
         classes: ['history__result'],
-        parent: container,
-        textContent: `${i + 1}. You found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
+        parent: list,
+        textContent: `${result[4]}<br>you found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
       });
     });
   }
