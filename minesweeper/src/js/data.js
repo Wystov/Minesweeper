@@ -23,8 +23,10 @@ class Game {
     this.time = 0;
     this.lastResults = JSON.parse(localStorage.getItem('minesweeper-history')) || [];
     const fromLs = localStorage.getItem('minesweeper-last-game');
-    const decodedData = atob(fromLs);
-    this.lastGame = JSON.parse(decodedData);
+    if (fromLs) {
+      const decodedData = atob(fromLs);
+      this.lastGame = JSON.parse(decodedData);
+    }
     this.lastTurns = localStorage.getItem('minesweeper-turns');
     this.lastTime = localStorage.getItem('minesweeper-time');
   }

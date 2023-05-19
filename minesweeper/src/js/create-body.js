@@ -10,17 +10,15 @@ import continueGame from './continue-game';
 import switchSound from './switch-sound';
 import changeTheme from './change-theme';
 import showSettings from './show-settings';
+import askName from './ask-name';
 
 const createBody = () => {
-  if (!state.name) {
-    state.name = prompt('What\'s your name?', 'Player');
-    state.save();
-  }
   newGame();
   document.body.classList.add(...state.theme);
   const container = createElement({
     classes: ['container'], parent: document.body, link: 'container',
   });
+  if (!state.name) askName();
   const controls = createElement({
     classes: ['controls'], parent: container,
   });
