@@ -7,8 +7,7 @@ const saveLastResult = (fieldSize, mines, turns, time) => {
   const date = new Date();
   page.lastResults.unshift([fieldSize, mines, turns, time, date, state.mode]);
   localStorage.setItem('minesweeper-history', JSON.stringify(page.lastResults));
-  // if (state.mode !== 'custom')
-  checkTop(turns, time, date);
+  if (state.mode !== 'custom') checkTop(turns, time, date);
 };
 
 export default saveLastResult;

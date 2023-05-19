@@ -52,7 +52,7 @@ const fillTop = async (container, difficulty) => {
         tag: 'li',
         classes: ['history__result'],
         parent: list,
-        textContent: `Player: ${res.name}<br>Mode: ${res.difficulty} Turns: ${res.turns} Time: ${res.time} seconds.<br>${resTime} ${resDate}`,
+        textContent: `Player: ${res.name} -|- Turns: ${res.turns} -|- Time: ${res.time} seconds.<br> Date: ${resTime} ${resDate}`,
       });
     });
   }
