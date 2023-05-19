@@ -22,7 +22,9 @@ class Game {
     this.turns = 0;
     this.time = 0;
     this.lastResults = JSON.parse(localStorage.getItem('minesweeper-history')) || [];
-    this.lastGame = JSON.parse(localStorage.getItem('minesweeper-last-game'));
+    const fromLs = localStorage.getItem('minesweeper-last-game');
+    const decodedData = atob(fromLs);
+    this.lastGame = JSON.parse(decodedData);
     this.lastTurns = localStorage.getItem('minesweeper-turns');
     this.lastTime = localStorage.getItem('minesweeper-time');
   }
@@ -30,7 +32,9 @@ class Game {
   save() {
     if (this.cells.open.length && state.game) {
       this.cells.elements.length = 0;
-      localStorage.setItem('minesweeper-last-game', JSON.stringify(this.cells));
+      const data = JSON.stringify(this.cells);
+      const encodedData = btoa(data);
+      localStorage.setItem('minesweeper-last-game', encodedData);
       localStorage.setItem('minesweeper-turns', this.turns);
       localStorage.setItem('minesweeper-time', this.time);
     }
