@@ -21,6 +21,7 @@ class Settings {
       this.mines = savedData.mines;
       this.theme = savedData.theme;
       this.mode = savedData.mode;
+      this.name = savedData.name;
     }
   }
 }

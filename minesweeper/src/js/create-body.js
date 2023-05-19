@@ -12,6 +12,10 @@ import changeTheme from './change-theme';
 import showSettings from './show-settings';
 
 const createBody = () => {
+  if (!state.name) {
+    state.name = prompt('What\'s your name?', 'Player');
+    state.save();
+  }
   newGame();
   document.body.classList.add(...state.theme);
   const container = createElement({

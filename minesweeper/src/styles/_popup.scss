@@ -15,6 +15,11 @@
   gap: 3vmin;
   animation: opacity 0.5s;
 
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__container {
     max-width: 1200px;
     width: 90vw;
@@ -48,4 +53,20 @@
     font-size: 2vmin;
     margin-bottom: 2vmin;
   }
+}
+
+.difficulty-btn__container {
+  display: flex;
+  justify-content: center;
+  gap: 5vmin;
+  order: 1;
+}
+
+.top-result-container {
+  order: 2;
+}
+
+.top-container {
+  display: flex;
+  flex-direction: column;
 }

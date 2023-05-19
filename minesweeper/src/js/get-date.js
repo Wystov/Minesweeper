@@ -1,8 +1,8 @@
-const getDate = () => {
-  const newDate = new Date();
-  const date = newDate.toLocaleDateString({ weekday: '', month: 'long' });
-  const time = newDate.toLocaleTimeString();
-  return `&#128337;${time} &#128197;${date}`;
+const getDate = (strDate) => {
+  const fullDate = new Date(strDate);
+  const date = fullDate.toLocaleDateString({ weekday: '', month: 'long' });
+  const time = fullDate.toLocaleTimeString();
+  return [time, date];
 };
 
 export default getDate;
