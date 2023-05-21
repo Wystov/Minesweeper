@@ -7,7 +7,7 @@ import state from './state';
 const fillHistory = (container) => {
   if (!page.lastResults.length) {
     createElement({
-      tag: 'p', classes: ['history__result'], parent: container, textContent: 'No history',
+      tag: 'p', classes: ['history__result', 'history__empty'], parent: container, textContent: 'No history',
     });
   } else {
     const list = createElement({
