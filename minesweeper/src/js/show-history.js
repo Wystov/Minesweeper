@@ -2,6 +2,7 @@ import page from './data';
 import createElement from './create-element';
 import getDate from './get-date';
 import loadTop from './load-top';
+import state from './state';
 
 const fillHistory = (container) => {
   if (!page.lastResults.length) {
@@ -18,7 +19,7 @@ const fillHistory = (container) => {
         tag: 'li',
         classes: ['history__result'],
         parent: list,
-        textContent: `&#128337;${time} &#128197;${date} &#128640;${result[5]}<br>you found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
+        textContent: `&#128337;${time} &#128197;${date} &#128640;${result[5]}<br>${state.name} found ${result[1]} mines on field ${result[0]}x${result[0]} in ${result[3]} seconds and ${result[2]} moves`,
       });
     });
   }
@@ -40,7 +41,7 @@ const fillTop = async (container, difficulty) => {
   const filteredData = data.filter((el) => el.difficulty === difficulty);
   if (filteredData.length === 0) {
     createElement({
-      tag: 'p', classes: ['history__result'], parent: container, textContent: 'No results',
+      tag: 'p', classes: ['history__result', 'history__empty'], parent: container, textContent: 'No results',
     });
   } else {
     const list = createElement({
@@ -52,7 +53,7 @@ const fillTop = async (container, difficulty) => {
         tag: 'li',
         classes: ['history__result'],
         parent: list,
-        textContent: `Player: ${res.name} -|- Turns: ${res.turns} -|- Time: ${res.time} seconds.<br> Date: ${resTime} ${resDate}`,
+        textContent: `Player: ${res.name}<br>Turns: ${res.turns} | Time: ${res.time} seconds.<br> Date: ${resTime} ${resDate}`,
       });
     });
   }
@@ -60,6 +61,7 @@ const fillTop = async (container, difficulty) => {
 
 const showHistory = () => {
   const historyEl = createElement({ classes: ['popup'], parent: page.elements.container });
+  setTimeout(() => historyEl.classList.add('popup--animation'), 10);
   const container = createElement({
     classes: ['popup__container', 'popup__message', 'popup__history'], parent: historyEl,
   });
@@ -89,18 +91,23 @@ const showHistory = () => {
       classes: ['difficulty-btn__container'],
       parent: resultContainer,
       onClick: (e) => {
-        topResultContainer.innerHTML = '';
-        fillTop(topResultContainer, e.target.textContent);
+        const target = e.target.classList.contains('difficulty-btn');
+        if (target) {
+          diffBtnContainer.childNodes.forEach((node) => node.classList.remove('difficulty-btn--active'));
+          e.target.classList.add('difficulty-btn--active');
+          topResultContainer.innerHTML = '';
+          fillTop(topResultContainer, e.target.textContent);
+        }
       },
     });
     createElement({
-      classes: ['difficulty--easy'], textContent: 'easy', parent: diffBtnContainer,
+      classes: ['difficulty-btn', 'difficulty-btn--active', 'difficulty-btn--easy'], textContent: 'easy', parent: diffBtnContainer,
     });
     createElement({
-      classes: ['difficulty--medium'], textContent: 'medium', parent: diffBtnContainer,
+      classes: ['difficulty-btn', 'difficulty-btn--medium'], textContent: 'medium', parent: diffBtnContainer,
     });
     createElement({
-      classes: ['difficulty--hard'], textContent: 'hard', parent: diffBtnContainer,
+      classes: ['difficulty-btn', 'difficulty-btn--hard'], textContent: 'hard', parent: diffBtnContainer,
     });
     fillTop(topResultContainer, 'easy');
   });
@@ -108,7 +115,8 @@ const showHistory = () => {
     classes: ['settings__apply'],
     parent: historyEl,
     onClick: () => {
-      historyEl.remove();
+      historyEl.classList.remove('popup--animation');
+      setTimeout(() => historyEl.remove(), 500);
     },
   });
 };

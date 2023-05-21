@@ -4,7 +4,7 @@ class Settings {
     this.sound = true;
     this.fieldSize = 100;
     this.mines = 10;
-    this.theme = ['style', 'light-theme'];
+    this.theme = ['page', 'page--theme-light'];
     this.mode = 'easy';
   }
 

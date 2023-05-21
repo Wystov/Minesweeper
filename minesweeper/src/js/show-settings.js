@@ -2,14 +2,23 @@ import createElement from './create-element';
 import setDifficulty from './set-difficulty';
 import state from './state';
 import page from './data';
+import askName from './ask-name';
 
 const showSettings = (createBody) => {
   const settings = createElement({
     classes: ['popup', 'settings'],
     parent: page.elements.container,
   });
+  setTimeout(() => settings.classList.add('popup--animation'), 10);
   const container = createElement({
     classes: ['settings__container'], parent: settings,
+  });
+  createElement({
+    tag: 'p',
+    classes: ['settings__title', 'settings__name'],
+    parent: container,
+    textContent: `${state.name}`,
+    onClick: askName,
   });
   const sizeForm = createElement({
     tag: 'form', classes: ['settings__item', 'size'], parent: container,
@@ -78,7 +87,8 @@ const showSettings = (createBody) => {
         state.mode = 'custom';
       }
       state.save();
-      createBody();
+      settings.classList.remove('popup--animation');
+      setTimeout(() => createBody(), 200);
     },
   });
   applyBtn.title = 'this will start new game';
@@ -86,7 +96,8 @@ const showSettings = (createBody) => {
     classes: ['settings__close'],
     parent: buttons,
     onClick: () => {
-      settings.remove();
+      settings.classList.remove('popup--animation');
+      setTimeout(() => settings.remove(), 500);
     },
   });
 };

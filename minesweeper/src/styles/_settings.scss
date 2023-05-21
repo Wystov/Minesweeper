@@ -4,11 +4,12 @@
     display: flex;
     flex-direction: column;
     font-weight: bold;
-    gap: 5vmin;
+    gap: 3vmin;
   }
 
 
   &__title {
+    font-size: 3vmin;
     text-align: center;
   }
 
@@ -16,7 +17,8 @@
     display: flex;
     align-items: center;
     margin: auto;
-    gap: 3vmin;
+    gap: 1.5vmin;
+    font-size: 2vmin;
 
     &.size,
     &.mines {
@@ -53,6 +55,24 @@
       transform: scale(1.1) rotate(360deg);
     }
   }
+
+  &__name {
+    cursor: pointer;
+    margin-bottom: 0;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: 0.5vmin;
+      left: 0.5vmin;
+      width: 3vmin;
+      height: 3vmin;
+      background-image: var(--edit-btn);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 .size {
@@ -63,4 +83,8 @@
   &__input {
     margin: auto;
   }
+}
+
+.mines {
+  margin-bottom: 2vmin;
 }

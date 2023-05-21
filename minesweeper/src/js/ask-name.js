@@ -3,7 +3,7 @@ import state from './state';
 import page from './data';
 
 const askName = () => {
-  const popup = createElement({ classes: ['popup'], parent: page.elements.container });
+  const popup = createElement({ classes: ['popup', 'popup--animation'], parent: page.elements.container });
   const container = createElement({
     classes: ['popup__container', 'popup__message', 'popup__history'], parent: popup,
   });
@@ -14,27 +14,29 @@ const askName = () => {
     classes: ['name-input'], tag: 'input', type: 'text', parent: container,
   });
   input.focus();
-  input.addEventListener('input', () => {
-    if (input.value.length > 3) {
-      if (!page.elements.applyBtn) {
-        createElement({
-          classes: ['settings__apply'],
-          parent: popup,
-          link: 'applyBtn',
-          onClick: () => {
-            if (input.value) {
-              state.name = input.value;
-              state.save();
-              popup.remove();
-            }
-          },
-        });
-      }
-    } else if (page.elements.applyBtn) {
+  const settingsName = document.querySelector('.settings__name');
+  const updateApplyBtn = () => {
+    if (input.value.length > 3 && !page.elements.applyBtn) {
+      createElement({
+        classes: ['settings__apply'],
+        parent: popup,
+        link: 'applyBtn',
+        onClick: () => {
+          if (input.value) {
+            state.name = input.value;
+            if (settingsName) settingsName.textContent = state.name;
+            state.save();
+            popup.classList.remove('popup--animation');
+            setTimeout(() => popup.remove(), 500);
+          }
+        },
+      });
+    } else if (input.value.length <= 3 && page.elements.applyBtn) {
       page.elements.applyBtn.remove();
       page.elements.applyBtn = null;
     }
-  });
+  };
+  input.addEventListener('input', updateApplyBtn);
 };
 
 export default askName;

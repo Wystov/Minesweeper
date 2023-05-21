@@ -10,6 +10,8 @@ const createPopup = (text, openCell) => {
     classes: ['popup'],
     parent: page.elements.container,
   });
+  setTimeout(() => popup.classList.add('popup--animation'), 10);
+
   createElement({
     classes: ['popup__container', 'popup__message'], parent: popup, textContent: text,
   });
@@ -21,7 +23,8 @@ const createPopup = (text, openCell) => {
     onClick: () => {
       page.cells.elements.forEach((_, i) => openCell(i));
       page.elements.controlsToggle.after(page.elements.newGameBtn);
-      popup.remove();
+      popup.classList.remove('popup--animation');
+      setTimeout(() => popup.remove(), 500);
     },
   });
 };

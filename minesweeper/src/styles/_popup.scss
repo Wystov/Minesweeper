@@ -13,7 +13,14 @@
   background-color: var(--body-bg);
   overflow: hidden;
   gap: 3vmin;
-  animation: opacity 0.5s;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+
+  &--animation {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 
   &__buttons {
     display: flex;
@@ -46,6 +53,8 @@
   &__list {
     max-height: 60vh;
     overflow-y: auto;
+    padding-left: 30px;
+    margin-bottom: 0;
   }
 
   &__result {
@@ -58,8 +67,20 @@
 .difficulty-btn__container {
   display: flex;
   justify-content: center;
+  margin: 4vmin 0 0;
+  font-size: 2.5vmin;
   gap: 5vmin;
   order: 1;
+}
+
+.difficulty-btn {
+  cursor: pointer;
+  padding: 1vmin 2vmin;
+
+  &--active,
+  &:hover {
+    outline: 2px solid var(--main-font);
+  }
 }
 
 .top-result-container {
@@ -72,7 +93,22 @@
 }
 
 .name-input {
+  padding: 1vmin 2vmin;
   font-size: 5vmin;
-  width: 200px;
-  height: 6vmin;
+  width: 30%;
+  background-color: var(--body-bg);
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--main-font);
+  color: var(--main-font);
+}
+
+.history__empty {
+  text-align: center;
+  padding-top: 5vmin;
+}
+
+.size__label,
+.size__input {
+  cursor: pointer;
 }
