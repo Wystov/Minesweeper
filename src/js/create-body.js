@@ -18,6 +18,11 @@ const createBody = () => {
   const container = createElement({
     classes: ['container'], parent: document.body, link: 'container',
   });
+
+  container.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+  });
+  
   if (!state.name) askName();
   const controls = createElement({
     classes: ['controls'], parent: container,
